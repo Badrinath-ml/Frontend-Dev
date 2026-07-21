@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    
+</head>
+
+<body>
+    <h1>Student Registration Form</h1>
+    <hr>
+    
+    <form action="#" method="POST" enctype="multipart/form-data">
+        
+        <label for="name">Student Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="rollno">Student Rollno/AdmNo:</label>
+        <input type="text" id="rollno" name="rollno" required><br><br>
+
+        <label for="f_name">Father Name:</label>
+        <input type="text" id="f_name" name="f_name" required><br><br>
+
+        <label for="phone">PhNo:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="email">Student Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="Gender" value="Male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="Gender" value="Female">
+        <label for="female">Female</label><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob"><br><br>
+
+        <label for="branch-select">Select Your Branch:</label>
+        <select id="branch-select" name="branch" required>
+            <option value="" disabled selected>-- Choose a Branch --</option>
+            <option value="CSE">Computer Science Engineering (CSE)</option>
+            <option value="ECE">Electronics & Communication (ECE)</option>
+            <option value="EEE">Electrical & Electronics (EEE)</option>
+            <option value="MECH">Mechanical Engineering (MECH)</option>
+            <option value="CIVIL">Civil Engineering (CIVIL)</option>
+            <option value="IT">Information Technology (IT)</option>
+        </select><br><br>
+
+        <label for="address">Address:</label><br>
+        <textarea id="address" name="address" rows="4" cols="30" placeholder="Enter your address"></textarea><br><br>
+
+        <label for="memo10">Upload your 10th Memo:</label>
+        <input type="file" id="memo10" name="memo10" accept=".pdf,image/*"><br><br>   
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+
+    </form>
+</body>
+
+</html>
