@@ -4,80 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>register Page</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: #f5f7fb;
-        color: #333;
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      main {
-        width: 100%;
-        max-width: 450px;
-        padding: 20px;
-        box-sizing: border-box;
-      }
-
-      form {
-        background: #ffffff;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        border-radius: 12px;
-        padding: 32px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .input_field {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .input_field label {
-        font-size: 0.95rem;
-        font-weight: 600;
-      }
-
-      .input_field input {
-        padding: 12px 14px;
-        border: 1px solid #ccd6e0;
-        border-radius: 8px;
-        font-size: 1rem;
-        outline: none;
-        transition: border-color 0.2s ease;
-      }
-
-      .check_box {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.95rem;
-      }
-      button[type="submit"] {
-        padding: 14px 16px;
-        border: none;
-        border-radius: 8px;
-        background: #ed5b2f;
-        color: #fff;
-        font-size: 1rem;
-        font-weight: 700;
-        cursor: pointer;
-        transition: background 0.2s ease;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <body class="auth-page register-page">
+    <header class="site-header">
+      <h1 class="fedex-logo">
+        <span class="food">Food</span><span class="ex">Ex</span>
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="#">Search</a></li>
+          <li><a href="#">Offers</a></li>
+          <li><a href="#">Cart</a></li>
+          <li id="login"><a href="login.html">Login</a></li>
+          <li id="register"><a href="register.html">Register</a></li>
+          <li id="order-now"><a href="home.html">Order Now</a></li>
+        </ul>
+      </nav>
+    </header>
     <main>
-      <header>
-        <h1>FastFood!</h1>
-        <p>order food online now!</p>
-      </header>
+      <h2>Create Your Account</h2>
       <form>
         <div class="input_field">
           <label for="f_name">First name</label>
@@ -106,7 +53,7 @@
           <input type="checkbox">
           <label for="remember_me">Remember me</label>
         </div>
-        <button type="submit">Sign Up</button>
+        <button type="submit">Register</button>
       </form>
 
     </main>
