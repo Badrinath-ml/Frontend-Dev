@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart | FoodEx</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f8f8f8;
+      }
+      .container {
+        max-width: 700px;
+        margin: 60px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      }
+      h1 {
+        margin-top: 0;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .btn {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        background: #ff5a5f;
+        color: white;
+        padding: 10px 18px;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Your Cart</h1>
+      <p id="cart-total">Total items: 0</p>
+      <ul id="cart-items"></ul>
+      <a href="home.html" class="btn">Order more items!</a>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
