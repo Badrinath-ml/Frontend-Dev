@@ -46,3 +46,4 @@ if (cartList) {
 }
 
 updateCart();
+

@@ -25,28 +25,33 @@
     </header>
     <main>
       <h2>Create Your Account</h2>
-      <form>
+      <form id="registerForm">
         <div class="input_field">
           <label for="f_name">First name</label>
-          <input type="text" id="f_name" placeholder="alex" require>
+          <input type="text" id="f_name" placeholder="alex" required>
+          <span class="error" id="f_name_error"></span>
         </div>
         <div class="input_field">
           <label for="l_name">Last name</label>
-          <input type="text" id="f_name" placeholder="jhon" require>
+          <input type="text" id="l_name" placeholder="jhon" required>
+          <span class="error" id="l_name_error"></span>
         </div>
         <div class="input_field">
           <label for="email">Email</label>
-          <input type="email" id="email" placeholder="alex@gmail.com" require>
+          <input type="email" id="email" placeholder="alex@gmail.com" required>
+          <span class="error" id="email_error"></span>
         </div>
 
         <div class="input_field">
           <label for="password">Password</label>
-          <input type="password" id="password" placeholder="........." require>
+          <input type="password" id="password" placeholder="........." required>
+          <span class="error" id="password_error"></span>
         </div>
         <!-- Location -->
         <div class="input_field">
           <label for="location">Location</label>
-          <input type="text" id="location" placeholder="Enter your location" require>
+          <input type="text" id="location" placeholder="Enter your location" required>
+          <span class="error" id="location_error"></span>
         </div>
 
         <div class="check_box">
@@ -57,5 +62,6 @@
       </form>
 
     </main>
+    <script src="register.js"></script>
   </body>
 </html>
