@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodEx Menu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="fedex-logo"><span class="food">Food</span><span class="ex">Ex</span></h1>
+    <nav><ul><li><a href="home.html">Home</a></li><li><a href="foodex-data.html">Menu Data</a></li><li><a href="register.html">Register</a></li><li><a href="cart.html" id="cart-link">cart(0)</a></li></ul></nav>
+  </header>
+  <main>
+    <h2>Restaurant Notes</h2>
+    <button class="order-btn" type="button" id="load-text-button">Load FoodEx Notes</button>
+    <div id="output" style="margin-top: 15px; white-space: pre-line;"></div>
+  </main>
+
+  <script>
+    document.getElementById('load-text-button').addEventListener('click', async () => {
+      const output = document.getElementById('output');
+
+      try {
+        const response = await fetch('about.txt');
+        if (!response.ok) throw new Error('Network error: ' + response.status);
+        output.textContent = await response.text();
+      } catch (error) {
+        output.textContent = 'Error: ' + error.message;
+      }
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

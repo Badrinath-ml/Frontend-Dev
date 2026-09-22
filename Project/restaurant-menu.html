@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodEx Restaurant Menu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="fedex-logo"><span class="food">Food</span><span class="ex">Ex</span></h1>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="foodex-data.html">Menu Data</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="cart.html" id="cart-link">cart(0)</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="restaurant-menu-header">
+      <img id="restaurant-image" class="restaurant-menu-image" alt="">
+      <div>
+        <h2 id="restaurant-name">Restaurant Menu</h2>
+        <p id="restaurant-details">Loading restaurant details...</p>
+      </div>
+    </section>
+    <section>
+      <h3>Available items</h3>
+      <div class="menu-grid" id="restaurant-menu-items">
+        <p class="menu-status">Loading menu...</p>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 const form = document.getElementById('registerForm');
 
-function validateForm(e) {
+async function validateForm(e) {
   e.preventDefault();
   clearErrors();
   
@@ -49,8 +49,36 @@ function validateForm(e) {
   }
 
   if (isValid) {
-    alert('Registration successful!');
-    form.reset();
+    const payload = {
+      firstName: fName,
+      lastName: lName,
+      email: email,
+      password: password,
+      location: location
+    };
+
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Server returned status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('Server Response:', data);
+
+      alert('Registration successful!');
+      form.reset();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('An error occurred during submission. Please try again.');
+    }
   }
 }
 

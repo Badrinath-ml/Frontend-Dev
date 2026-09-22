@@ -1,0 +1,3 @@
+Welcome to FoodEx.
+Order meals from your favourite restaurants with fast, simple online ordering.
+This restaurant note was loaded asynchronously without reloading the page.

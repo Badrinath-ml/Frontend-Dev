@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE menu SYSTEM "foodex-menu.dtd">
+<menu>
+  <item id="M001">
+    <name>Chicken Biryani</name>
+    <category>Biryani</category>
+    <price>300</price>
+  </item>
+  <item id="M002">
+    <name>Margherita Pizza</name>
+    <category>Pizza</category>
+    <price>400</price>
+  </item>
+  <item id="M003">
+    <name>Classic Chicken Burger</name>
+    <category>Burgers</category>
+    <price>200</price>
+  </item>
+</menu>

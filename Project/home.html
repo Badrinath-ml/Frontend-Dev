@@ -14,7 +14,10 @@
       <nav>
         <ul>
           <li><a href="home.html">Home</a></li>
-          <li><a href="#">Browse Menu</a></li>
+          <li><a href="#restaurants">Browse Menu</a></li>
+          <li><a href="foodex-data.html">Menu Data</a></li>
+          <li><a href="foodex-feedback.html">Feedback</a></li>
+          <li><a href="foodex-notes.html">About</a></li>
           <li><a href="#">Offers</a></li>
           <li><a href="#">Track Order</a></li>
           <li><a href="cart.html" id="cart-link">cart(0)</a></li>
@@ -52,34 +55,11 @@
       </section>
 
       <!-- 4. Restaurants -->
-      <section class="restaurants-section">
+      <section class="restaurants-section" id="restaurants">
         <h3>Top restaurant chains in your area</h3>
 
-        <div class="restaurant-grid">
-          <div class="restaurant-card">
-            <img class="restaurant-image" src="https://images.unsplash.com/photo-1631515242808-497c3fbd3972?auto=format&amp;fit=crop&amp;w=640&amp;q=80" alt="Spice Garden biryani" />
-            <h4>Spice Garden</h4>
-            <p>⭐ 4.2 • 25-30 mins</p>
-            <p>North Indian, Biryani • ₹300 for two</p>
-            <button class="order-btn" data-name="Spice Garden">Order Now</button>
-          </div>
-
-          <div class="restaurant-card">
-            <img class="restaurant-image" src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&amp;fit=crop&amp;w=640&amp;q=80" alt="Pizza from Pizza Zone" />
-            <h4>Pizza Zone</h4>
-            <p>⭐ 4.5 • 20-25 mins</p>
-            <p>Pizzas, Fast Food • ₹400 for two</p>
-            <button class="order-btn" data-name="Pizza Zone">Order Now</button>
-
-          </div>
-
-          <div class="restaurant-card">
-            <img class="restaurant-image" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&amp;fit=crop&amp;w=640&amp;q=80" alt="Burger from The Burger House" />
-            <h4>The Burger House</h4>
-            <p>⭐ 3.9 • 30-35 mins</p>
-            <p>Burgers, Beverages • ₹200 for two</p>
-            <button class="order-btn" data-name="The Burger House">Order Now</button>
-          </div>
+        <div class="restaurant-grid" id="restaurant-previews">
+          <p class="menu-status">Loading restaurant partners...</p>
         </div>
       </section>
 
