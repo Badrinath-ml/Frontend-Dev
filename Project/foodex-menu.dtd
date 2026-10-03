@@ -1,6 +1,8 @@
 <!ELEMENT menu (item+)>
-<!ELEMENT item (name, category, price)>
+<!ELEMENT item (name, category, restaurant, price, image)>
 <!ATTLIST item id ID #REQUIRED>
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT category (#PCDATA)>
+<!ELEMENT restaurant (#PCDATA)>
 <!ELEMENT price (#PCDATA)>
+<!ELEMENT image (#PCDATA)>
