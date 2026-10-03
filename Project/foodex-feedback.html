@@ -3,34 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FoodEx Feedback</title>
+  <title>Feedback | FoodEX</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Week 10: Send feedback data using Fetch API and POST method. -->
   <header class="site-header">
-    <h1 class="fedex-logo"><span class="food">Food</span><span class="ex">Ex</span></h1>
-    <nav><ul><li><a href="home.html">Home</a></li><li><a href="foodex-data.html">Menu Data</a></li><li><a href="register.html">Register</a></li><li><a href="cart.html" id="cart-link">cart(0)</a></li></ul></nav>
+    <a class="brand" href="home.html"><span>Food</span>EX</a>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="home.html#restaurants">Restaurants</a>
+      <a href="foodex-data.html">FoodEX Data</a>
+      <a class="active" href="foodex-feedback.html">Feedback</a>
+      <a href="cart.html" class="cart-link">Cart (0)</a>
+    </nav>
   </header>
-  <main>
-    <h2>FoodEx Feedback</h2>
-    <form id="feedback-form" style="display: grid; gap: 12px; max-width: 480px;">
-      <label for="name">Name:</label>
-      <input type="text" id="name" required>
-    <br><br>
-      <label for="email">Email:</label>
-      <input type="email" id="email" required>
-      <label for="message">Feedback:</label>
-      <textarea id="message" rows="4" required></textarea>
-    <br><br>
-    <button class="order-btn" type="submit">Send Feedback</button>
-    </form>
-    <pre id="output"></pre>
+
+  <main class="form-page">
+    <div class="form-card">
+      <p class="eyebrow">WEEK 10</p>
+      <h1>Send feedback</h1>
+      <p class="muted">This form demonstrates a POST request with Fetch API.</p>
+
+      <form id="feedback-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+
+        <label for="message">Feedback</label>
+        <textarea id="message" rows="5" required></textarea>
+
+        <button class="button primary full-width" type="submit">Send Feedback</button>
+      </form>
+      <pre id="output" class="text-output">No request sent yet.</pre>
+    </div>
   </main>
 
   <script>
+    // Week 10: POST form data using Fetch API.
     document.getElementById('feedback-form').addEventListener('submit', async (event) => {
       event.preventDefault();
       const output = document.getElementById('output');
+
       const payload = {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
@@ -43,6 +59,7 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
+
         if (!response.ok) throw new Error('Network error: ' + response.status);
         const data = await response.json();
         output.textContent = 'Server Response:\n' + JSON.stringify(data, null, 2);
