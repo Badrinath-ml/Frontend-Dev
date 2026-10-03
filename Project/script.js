@@ -76,7 +76,7 @@ async function loadRestaurantPreviews() {
           menu: restaurant.menuFile,
           image: restaurant.image
         });
-        window.open(`restaurant-menu.html?${params}`, '_blank', 'noopener');
+        window.open(`restaurant-menu.html?${params}`, '_self', 'noopener');
       });
     });
   } catch (error) {
