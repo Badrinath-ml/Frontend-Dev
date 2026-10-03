@@ -1,3 +1,0 @@
-Margherita Pizza|Classic tomato sauce, mozzarella, basil, and olive oil on a crisp crust.|400|https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80
-Farmhouse Pizza|Garden vegetables, mozzarella and Italian herbs on a crisp crust.|480|https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=800&q=80
-Garlic Bread|Warm toasted bread with garlic butter, herbs and melted cheese.|180|https://images.unsplash.com/photo-1573140401552-388e9cdfc7cc?auto=format&fit=crop&w=800&q=80
