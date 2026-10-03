@@ -1,52 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | FoodEX</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+  <!-- Week 1: Static login page. -->
+  <header class="site-header">
+    <a class="brand" href="home.html"><span>Food</span>EX</a>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="home.html#restaurants">Restaurants</a>
+      <a href="cart.html" class="cart-link">Cart (0)</a>
+      <a class="active" href="login.html">Login</a>
+      <a class="nav-cta" href="register.html">Register</a>
+    </nav>
+  </header>
 
-    <title>Login Page</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body class="auth-page login-page">
-    <header class="site-header">
-      <h1 class="fedex-logo">
-        <span class="food">Food</span><span class="ex">Ex</span>
-      </h1>
-      <nav>
-        <ul>
-          <li><a href="home.html">Home</a></li>
-          <li><a href="#">Search</a></li>
-          <li><a href="#">Offers</a></li>
-          <li><a href="#">Cart</a></li>
-          <li id="login"><a href="login.html">Login</a></li>
-          <li id="register"><a href="register.html">Register</a></li>
-          <li id="order-now"><a href="home.html">Order Now</a></li>
-        </ul>
-      </nav>
-    </header>
+  <main class="form-page">
+    <div class="form-card">
+      <p class="eyebrow">WEEK 1</p>
+      <h1>Welcome back</h1>
+      <p class="muted">Login page for the FoodEX website.</p>
+      <form action="home.html" method="get">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="alex@gmail.com" required>
 
-    <main>
-      <h2>Welcome Back</h2>
-      <form action="home.html" method="post">
-        
-        <div class="input_field">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="alex@gmail.com" required>
-        </div>
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required>
 
-        <div class="input_field">
-          <label for="password">Password</label>
-          <input type="password" id="password" placeholder="........." required>
-        </div>
-
-        <div class="check_box">
+        <label class="checkbox-row">
           <input type="checkbox" id="remember_me">
-          <label for="remember_me">Remember me</label>
-        </div>
-        <button type="submit">Login</button>
-        <p class="form_footer">Don't have an account? <a href="register.html">Register</a></p>
-      </form>
+          <span>Remember me</span>
+        </label>
 
-    </main>
-  </body>
+        <button class="button primary full-width" type="submit">Login</button>
+      </form>
+      <p class="form-footer">Don't have an account? <a href="register.html">Register</a></p>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
 </html>
