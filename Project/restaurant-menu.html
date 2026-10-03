@@ -3,36 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FoodEx Restaurant Menu</title>
+  <title>Restaurant Menu | FoodEX</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Week 5: Restaurant catalogue item opens the complete restaurant menu. -->
   <header class="site-header">
-    <h1 class="fedex-logo"><span class="food">Food</span><span class="ex">Ex</span></h1>
+    <a class="brand" href="home.html"><span>Food</span>EX</a>
     <nav>
-      <ul>
-        <li><a href="home.html">Home</a></li>
-        <li><a href="foodex-data.html">Menu Data</a></li>
-        <li><a href="register.html">Register</a></li>
-        <li><a href="cart.html" id="cart-link">cart(0)</a></li>
-      </ul>
+      <a href="home.html">Home</a>
+      <a class="active" href="home.html#restaurants">Restaurants</a>
+      <a href="foodex-data.html">FoodEX Data</a>
+      <a href="cart.html" class="cart-link">Cart (0)</a>
+      <a href="login.html">Login</a>
     </nav>
   </header>
+
   <main>
+    <div class="breadcrumb"><a href="home.html">Home</a> / Restaurant Menu</div>
+
     <section class="restaurant-menu-header">
       <img id="restaurant-image" class="restaurant-menu-image" alt="">
       <div>
-        <h2 id="restaurant-name">Restaurant Menu</h2>
-        <p id="restaurant-details">Loading restaurant details...</p>
+        <p class="eyebrow">FOODEX RESTAURANT</p>
+        <h1 id="restaurant-name">Restaurant Menu</h1>
+        <p id="restaurant-details" class="muted">Loading restaurant details...</p>
       </div>
     </section>
-    <section>
-      <h3>Available items</h3>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">MENU</p>
+          <h2>Available items</h2>
+        </div>
+      </div>
       <div class="menu-grid" id="restaurant-menu-items">
         <p class="menu-status">Loading menu...</p>
       </div>
     </section>
   </main>
+
   <script src="script.js"></script>
 </body>
 </html>
