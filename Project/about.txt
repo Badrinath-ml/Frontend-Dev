@@ -1,3 +1,15 @@
-Welcome to FoodEx.
-Order meals from your favourite restaurants with fast, simple online ordering.
-This restaurant note was loaded asynchronously without reloading the page.
+FoodEX is a simple student-built food delivery website.
+
+Weekly assignment work included:
+- Week 1: Static home and login pages.
+- Week 2: Student registration form.
+- Week 3: External CSS styling.
+- Week 4: JavaScript form validation.
+- Week 5: Food catalogue, restaurant menus and localStorage cart.
+- Week 6: XML menu data and DTD.
+- Week 7: Review and skill test.
+- Week 8: Fetch API text loading.
+- Week 9: Fetch API JSON/XML parsing.
+- Week 10: Fetch API POST request.
+
+The project intentionally uses plain HTML, CSS and JavaScript.
