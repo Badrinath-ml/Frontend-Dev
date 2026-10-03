@@ -1,4 +1,4 @@
-FoodEX is a simple student-built food delivery website.
+FoodEX is a food delivery website.
 
 Weekly assignment work included:
 - Week 1: Static home and login pages.
@@ -11,5 +11,3 @@ Weekly assignment work included:
 - Week 8: Fetch API text loading.
 - Week 9: Fetch API JSON/XML parsing.
 - Week 10: Fetch API POST request.
-
-The project intentionally uses plain HTML, CSS and JavaScript.
