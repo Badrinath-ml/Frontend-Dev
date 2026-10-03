@@ -3,21 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FoodEx Menu</title>
+  <title>FoodEX Notes | Fetch Text</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Week 8: Fetch API loads text data asynchronously. -->
   <header class="site-header">
-    <h1 class="fedex-logo"><span class="food">Food</span><span class="ex">Ex</span></h1>
-    <nav><ul><li><a href="home.html">Home</a></li><li><a href="foodex-data.html">Menu Data</a></li><li><a href="register.html">Register</a></li><li><a href="cart.html" id="cart-link">cart(0)</a></li></ul></nav>
+    <a class="brand" href="home.html"><span>Food</span>EX</a>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="home.html#restaurants">Restaurants</a>
+      <a href="foodex-data.html">FoodEX Data</a>
+      <a class="active" href="foodex-notes.html">Notes</a>
+      <a href="cart.html" class="cart-link">Cart (0)</a>
+    </nav>
   </header>
+
   <main>
-    <h2>Restaurant Notes</h2>
-    <button class="order-btn" type="button" id="load-text-button">Load FoodEx Notes</button>
-    <div id="output" style="margin-top: 15px; white-space: pre-line;"></div>
+    <section class="page-intro">
+      <p class="eyebrow">WEEK 8</p>
+      <h1>Load FoodEX notes</h1>
+      <p>A small text file is loaded asynchronously without refreshing the page.</p>
+    </section>
+
+    <section class="data-card">
+      <button class="button primary" type="button" id="load-text-button">Load Notes</button>
+      <pre id="output" class="text-output">Waiting for data...</pre>
+    </section>
   </main>
 
   <script>
+    // Week 8: Fetch text data asynchronously.
     document.getElementById('load-text-button').addEventListener('click', async () => {
       const output = document.getElementById('output');
 
