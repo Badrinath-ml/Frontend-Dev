@@ -1,39 +1,83 @@
-// Week 5: JavaScript catalogue, restaurant navigation and localStorage cart.
-// Weeks 8-10 use the same Fetch API approach on their dedicated pages.
+// Week 5: Restaurant catalogue, menu navigation and localStorage cart.
+// Week 8-10: Fetch API is used on the dedicated assignment pages.
 
 const CART_KEY = 'foodexCart';
 
 function getCart() {
-  const saved = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
-  return saved.map((item) => typeof item === 'string'
-    ? { name: item, restaurant: 'FoodEX', price: 0, image: '' }
-    : item);
+  try {
+    const saved = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+    return Array.isArray(saved) ? saved : [];
+  } catch {
+    return [];
+  }
 }
 
 function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
+function money(value) {
+  return '₹' + Number(value || 0).toLocaleString('en-IN');
+}
+
+function isRootPage() {
+  return window.location.pathname.endsWith('/home.html') || window.location.pathname.endsWith('/Project/');
+}
+
+function pageLink(file) {
+  return isRootPage() ? 'pages/' + file : file;
+}
+
+function homeLink(anchor = '') {
+  return isRootPage() ? 'home.html' + anchor : '../home.html' + anchor;
+}
+
+function normalizeNavigation() {
+  const nav = document.querySelector('.main-nav, header nav');
+  if (!nav) return;
+
+  const current = window.location.pathname.split('/').pop() || 'home.html';
+  const isHome = current === 'home.html' || current === '';
+  const isRestaurant = current === 'restaurant-menu.html';
+  const isCart = current === 'cart.html';
+  const isData = current === 'foodex-data.html';
+  const isFeedback = current === 'foodex-feedback.html';
+  const isNotes = current === 'foodex-notes.html';
+  const isLogin = current === 'login.html';
+  const isRegister = current === 'register.html';
+
+  nav.innerHTML = `
+    <a class="${isHome ? 'active' : ''}" href="${homeLink()}">Home</a>
+    <a class="${isRestaurant ? 'active' : ''}" href="${homeLink('#restaurants')}">Restaurants</a>
+    <a class="${isData || isNotes ? 'active' : ''}" href="${pageLink('foodex-data.html')}">FoodEX Data</a>
+    <a class="${isFeedback ? 'active' : ''}" href="${pageLink('foodex-feedback.html')}">Feedback</a>
+    <a class="${isCart ? 'active' : ''} cart-link" href="${pageLink('cart.html')}">Cart (0)</a>
+    ${isLogin ? '' : '<a href="' + pageLink('login.html') + '">Login</a>'}
+    ${isRegister ? '' : '<a class="nav-cta" href="' + pageLink('register.html') + '">Register</a>'}
+  `;
+}
+
 function updateCart() {
+  const count = getCart().length;
   document.querySelectorAll('.cart-link').forEach((link) => {
-    link.textContent = `Cart (${getCart().length})`;
+    link.textContent = `Cart (${count})`;
   });
 }
 
 function showOrderConfirmation(item) {
-  const oldModal = document.querySelector('.modal-backdrop');
-  if (oldModal) oldModal.remove();
+  document.querySelector('.modal-backdrop')?.remove();
 
   const backdrop = document.createElement('div');
   backdrop.className = 'modal-backdrop';
   backdrop.innerHTML = `
-    <div class="order-modal">
+    <div class="order-modal" role="dialog" aria-modal="true">
       <div class="confirm-icon">✓</div>
-      <h2>Order Confirmed</h2>
-      <p><strong>${item.name}</strong> from ${item.restaurant} has been added to your FoodEX order.</p>
+      <p class="eyebrow">FOODEX ORDER</p>
+      <h2>Added to your cart</h2>
+      <p><strong>${item.name}</strong> from ${item.restaurant} is now in your FoodEX cart.</p>
       <div class="button-row" style="justify-content:center">
-        <a class="button secondary" href="cart.html">View Cart</a>
-        <button class="button primary" type="button" id="close-order-modal">Continue</button>
+        <a class="button secondary" href="${pageLink('cart.html')}">View Cart</a>
+        <button class="button primary" type="button" id="close-order-modal">Continue Browsing</button>
       </div>
     </div>
   `;
@@ -47,8 +91,11 @@ function showOrderConfirmation(item) {
 
 function addToCart(event) {
   event.preventDefault();
+  event.stopPropagation();
 
   const button = event.currentTarget;
+  if (!button.classList.contains('order-btn')) return;
+
   const item = {
     name: button.dataset.name || 'Food Item',
     restaurant: button.dataset.restaurant || 'FoodEX',
@@ -60,20 +107,16 @@ function addToCart(event) {
   cart.push(item);
   saveCart(cart);
   updateCart();
-
-  // Week 5: Confirm the order action and keep the selected item in the cart.
   showOrderConfirmation(item);
 }
 
-document.querySelectorAll('.order-btn').forEach((button) => {
-  button.addEventListener('click', addToCart);
-});
-
-function money(value) {
-  return `₹${Number(value).toLocaleString('en-IN')}`;
+function bindOrderButtons() {
+  document.querySelectorAll('.order-btn').forEach((button) => {
+    button.removeEventListener('click', addToCart);
+    button.addEventListener('click', addToCart);
+  });
 }
 
-// Week 5: Display the saved cart with prices and a simple order summary.
 function renderCart() {
   const container = document.getElementById('cart-items');
   if (!container) return;
@@ -83,12 +126,12 @@ function renderCart() {
 
   if (!cart.length) {
     container.innerHTML = '';
-    empty.style.display = 'block';
+    if (empty) empty.style.display = 'grid';
   } else {
-    empty.style.display = 'none';
+    if (empty) empty.style.display = 'none';
     container.innerHTML = cart.map((item, index) => `
       <article class="cart-item">
-        ${item.image ? `<img src="${item.image}" alt="${item.name}">` : '<div></div>'}
+        ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ''}
         <div>
           <h3>${item.name}</h3>
           <p>${item.restaurant}</p>
@@ -119,9 +162,11 @@ function renderCart() {
   });
 }
 
-const placeOrder = document.getElementById('place-order');
-if (placeOrder) {
-  placeOrder.addEventListener('click', () => {
+function setupPlaceOrder() {
+  const button = document.getElementById('place-order');
+  if (!button) return;
+
+  button.addEventListener('click', () => {
     const cart = getCart();
 
     if (!cart.length) {
@@ -136,166 +181,159 @@ if (placeOrder) {
   });
 }
 
-renderCart();
-updateCart();
+function dataPath(file) {
+  return isRootPage() ? file : '../' + file;
+}
 
-// Week 5: Load restaurant chains from JSON and build the home page cards.
-async function loadRestaurantPreviews() {
-  const restaurantPreviews = document.getElementById('restaurant-previews');
-  if (!restaurantPreviews) return;
+async function getRestaurants() {
+  const response = await fetch(dataPath('foodex-menu.json'));
+  if (!response.ok) throw new Error('Restaurant data request failed');
 
-  try {
-    const response = await fetch('foodex-menu.json');
-    if (!response.ok) throw new Error('Restaurant request failed');
+  const restaurants = await response.json();
 
-    const restaurants = await response.json();
-    const menuIndex = [];
+  for (const restaurant of restaurants) {
+    try {
+      const menuResponse = await fetch(dataPath(restaurant.menuFile));
+      if (!menuResponse.ok) continue;
 
-    for (const restaurant of restaurants) {
-      try {
-        const menuResponse = await fetch(restaurant.menuFile);
-        if (!menuResponse.ok) continue;
-
-        const lines = (await menuResponse.text()).split('\n');
-        restaurant.menuItems = lines.map((line) => line.split('|')[0].trim()).filter(Boolean);
-        restaurant.searchText = [
-          restaurant.name,
-          restaurant.cuisine,
-          ...restaurant.menuItems
-        ].join(' ').toLowerCase();
-
-        menuIndex.push(restaurant);
-      } catch {
-        restaurant.menuItems = [];
-        restaurant.searchText = `${restaurant.name} ${restaurant.cuisine}`.toLowerCase();
-        menuIndex.push(restaurant);
-      }
+      const lines = (await menuResponse.text()).split('\n').map((line) => line.trim()).filter(Boolean);
+      restaurant.menuItems = lines.map((line) => line.split('|')[0].trim());
+    } catch {
+      restaurant.menuItems = [];
     }
 
-    function renderRestaurants(list, query = '') {
-      const heading = document.getElementById('restaurant-heading');
-      const resultCount = document.getElementById('result-count');
+    restaurant.searchText = [
+      restaurant.name,
+      restaurant.cuisine,
+      ...restaurant.menuItems
+    ].join(' ').toLowerCase();
+  }
 
-      if (heading) heading.textContent = query ? `Search results for "${query}"` : 'Top restaurant chains';
-      if (resultCount) resultCount.textContent = `${list.length} restaurant${list.length === 1 ? '' : 's'}`;
+  return restaurants;
+}
+
+async function loadRestaurantPreviews() {
+  const container = document.getElementById('restaurant-previews');
+  if (!container) return;
+
+  try {
+    const restaurants = await getRestaurants();
+    const heading = document.getElementById('restaurant-heading');
+    const count = document.getElementById('result-count');
+    const searchInput = document.getElementById('food-search');
+    const searchForm = document.getElementById('food-search-form');
+
+    function render(list, query = '') {
+      heading.textContent = query ? `Search results for "${query}"` : 'Popular restaurants';
+      count.textContent = `${list.length} restaurant${list.length === 1 ? '' : 's'}`;
 
       if (!list.length) {
-        restaurantPreviews.innerHTML = '<div class="empty-state">No restaurants or food items matched your search.</div>';
+        container.innerHTML = '<div class="empty-state">No restaurant or food item matched your search.</div>';
         return;
       }
 
-      restaurantPreviews.innerHTML = list.map((restaurant) => `
+      container.innerHTML = list.map((restaurant) => `
         <article class="restaurant-card">
           <img class="restaurant-image" src="${restaurant.image}" alt="Food from ${restaurant.name}">
           <div class="restaurant-card-body">
             <p class="eyebrow">RESTAURANT</p>
             <h3>${restaurant.name}</h3>
             <div class="restaurant-meta">
-              <span>⭐ ${restaurant.rating}</span>
+              <span>★ ${restaurant.rating}</span>
               <strong>${restaurant.cuisine}</strong>
             </div>
-            <a class="button primary" href="restaurant-menu.html?name=${encodeURIComponent(restaurant.name)}&cuisine=${encodeURIComponent(restaurant.cuisine)}&rating=${encodeURIComponent(restaurant.rating)}&menu=${encodeURIComponent(restaurant.menuFile)}&image=${encodeURIComponent(restaurant.image)}">Explore Menu</a>
+            <a class="button primary" href="pages/restaurant-menu.html?id=${encodeURIComponent(restaurant.id)}">Explore Menu</a>
           </div>
         </article>
       `).join('');
     }
 
-    renderRestaurants(menuIndex);
-
-    const searchForm = document.getElementById('food-search-form');
-    const searchInput = document.getElementById('food-search');
-
     function runSearch() {
       const query = searchInput.value.trim().toLowerCase();
-      const matches = !query
-        ? menuIndex
-        : menuIndex.filter((restaurant) => restaurant.searchText.includes(query));
-
-      renderRestaurants(matches, searchInput.value.trim());
+      const matches = query ? restaurants.filter((restaurant) => restaurant.searchText.includes(query)) : restaurants;
+      render(matches, searchInput.value.trim());
       document.getElementById('restaurants').scrollIntoView({ behavior: 'smooth' });
     }
+
+    render(restaurants);
 
     searchForm.addEventListener('submit', (event) => {
       event.preventDefault();
       runSearch();
     });
 
-    document.querySelectorAll('.category-chip').forEach((button) => {
+    document.querySelectorAll('.quick-searches button').forEach((button) => {
       button.addEventListener('click', () => {
         searchInput.value = button.dataset.search;
         runSearch();
       });
     });
-  } catch (error) {
-    restaurantPreviews.innerHTML = '<p class="menu-status">Restaurant partners are unavailable right now.</p>';
+  } catch {
+    container.innerHTML = '<p class="error-message">Restaurant data could not be loaded.</p>';
   }
 }
 
-loadRestaurantPreviews();
-
-// Week 5: Load the selected restaurant's complete menu.
 async function loadRestaurantPage() {
-  const menuItems = document.getElementById('restaurant-menu-items');
-  if (!menuItems) return;
+  const container = document.getElementById('restaurant-menu-items');
+  if (!container) return;
 
-  const params = new URLSearchParams(window.location.search);
-  const restaurantName = params.get('name') || 'Restaurant';
-  const menuFile = params.get('menu');
-
-  document.getElementById('restaurant-name').textContent = restaurantName;
-  document.getElementById('restaurant-details').textContent =
-    `${params.get('cuisine') || 'FoodEX partner'} • ⭐ ${params.get('rating') || 'New'}`;
-
-  const restaurantImage = document.getElementById('restaurant-image');
-  if (restaurantImage && params.get('image')) {
-    restaurantImage.src = params.get('image');
-    restaurantImage.alt = `Food from ${restaurantName}`;
-  }
-
-  if (!menuFile || !/^[\w-]+\.txt$/.test(menuFile)) {
-    menuItems.innerHTML = '<p class="menu-status">This restaurant menu is unavailable.</p>';
-    return;
-  }
+  const id = new URLSearchParams(window.location.search).get('id');
 
   try {
-    const response = await fetch(menuFile);
-    if (!response.ok) throw new Error('Menu request failed');
+    const restaurants = await getRestaurants();
+    const restaurant = restaurants.find((item) => item.id === id);
 
-    const items = (await response.text()).split('\n').map((line) => {
-      const [name, description, price, image] = line.split('|').map((part) => part.trim());
-      return { name, description, price, image };
+    if (!restaurant) {
+      container.innerHTML = '<p class="error-message">Restaurant not found.</p>';
+      return;
+    }
+
+    document.getElementById('restaurant-name').textContent = restaurant.name;
+    document.getElementById('restaurant-details').textContent = `${restaurant.cuisine} · ★ ${restaurant.rating}`;
+
+    const image = document.getElementById('restaurant-image');
+    image.src = restaurant.image;
+    image.alt = `Food from ${restaurant.name}`;
+
+    const menuResponse = await fetch(dataPath(restaurant.menuFile));
+    if (!menuResponse.ok) throw new Error('Menu request failed');
+
+    const items = (await menuResponse.text()).split('\n').map((line) => {
+      const [name, description, price, itemImage] = line.split('|').map((part) => part.trim());
+      return { name, description, price: Number(price) || 0, image: itemImage };
     }).filter((item) => item.name);
 
-    menuItems.innerHTML = items.map((item) => {
-      const numericPrice = Number((item.price || '').replace(/[^0-9.]/g, '')) || 0;
+    const count = document.getElementById('menu-count');
+    if (count) count.textContent = `${items.length} items`;
 
-      return `
-        <article class="menu-card">
-          <img class="menu-item-image" src="${item.image}" alt="${item.name}">
-          <div class="menu-card-body">
-            <p class="eyebrow">${restaurantName}</p>
-            <h3>${item.name}</h3>
-            <p>${item.description}</p>
-            <strong>${money(numericPrice)}</strong>
-            <button class="order-btn"
-              type="button"
-              data-name="${item.name}"
-              data-restaurant="${restaurantName}"
-              data-price="${numericPrice}"
-              data-image="${item.image}">
-              Order Now
-            </button>
-          </div>
-        </article>
-      `;
-    }).join('');
+    container.innerHTML = items.map((item) => `
+      <article class="menu-card">
+        <img class="menu-item-image" src="${item.image}" alt="${item.name}">
+        <div class="menu-card-body">
+          <p class="eyebrow">${restaurant.name}</p>
+          <h3>${item.name}</h3>
+          <p>${item.description}</p>
+          <strong>${money(item.price)}</strong>
+          <button class="order-btn" type="button"
+            data-name="${item.name}"
+            data-restaurant="${restaurant.name}"
+            data-price="${item.price}"
+            data-image="${item.image}">
+            Order Now
+          </button>
+        </div>
+      </article>
+    `).join('');
 
-    menuItems.querySelectorAll('.order-btn').forEach((button) => {
-      button.addEventListener('click', addToCart);
-    });
-  } catch (error) {
-    menuItems.innerHTML = '<p class="menu-status">Unable to load this menu right now.</p>';
+    bindOrderButtons();
+  } catch {
+    container.innerHTML = '<p class="error-message">Unable to load this restaurant menu.</p>';
   }
 }
 
+normalizeNavigation();
+renderCart();
+setupPlaceOrder();
+updateCart();
+loadRestaurantPreviews();
 loadRestaurantPage();
