@@ -3,53 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FoodEx Menu Data</title>
+  <title>FoodEX Data | JSON & XML</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Week 6: XML + DTD are used for the complete FoodEX menu data. -->
+  <!-- Week 9: JSON/XML responses are parsed and displayed with Fetch API. -->
   <header class="site-header">
-    <h1 class="fedex-logo"><span class="food">Food</span><span class="ex">Ex</span></h1>
-    <nav><ul><li><a href="home.html">Home</a></li><li><a href="foodex-notes.html">About</a></li><li><a href="register.html">Register</a></li><li><a href="cart.html" id="cart-link">cart(0)</a></li></ul></nav>
+    <a class="brand" href="home.html"><span>Food</span>EX</a>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="home.html#restaurants">Restaurants</a>
+      <a class="active" href="foodex-data.html">FoodEX Data</a>
+      <a href="foodex-feedback.html">Feedback</a>
+      <a href="cart.html" class="cart-link">Cart (0)</a>
+    </nav>
   </header>
+
   <main>
-    <h2>FoodEx Data</h2>
-    <button class="order-btn" type="button" id="load-xml-button">Load Menu (XML)</button>
-    <button class="order-btn" type="button" id="load-json-button">Load Restaurants (JSON)</button>
-    <div id="output" class="menu-grid" style="margin-top: 20px;"></div>
+    <section class="page-intro">
+      <p class="eyebrow">WEEK 6 + WEEK 9</p>
+      <h1>FoodEX data</h1>
+      <p>Use these buttons to demonstrate how FoodEX loads restaurant chains from JSON and the complete menu from XML.</p>
+    </section>
+
+    <section class="data-card">
+      <div class="button-row">
+        <button class="button primary" type="button" id="load-json-button">Load Restaurants (JSON)</button>
+        <button class="button secondary" type="button" id="load-xml-button">Load Full Menu (XML)</button>
+      </div>
+      <div id="output" class="data-output">
+        <p class="muted">Choose JSON or XML to load the data.</p>
+      </div>
+    </section>
   </main>
 
   <script>
+    // Week 9: Fetch API loads and parses the JSON restaurant response.
     const output = document.getElementById('output');
 
     document.getElementById('load-json-button').addEventListener('click', async () => {
       try {
         const response = await fetch('foodex-menu.json');
         if (!response.ok) throw new Error('Network error: ' + response.status);
-        const items = await response.json();
-        output.innerHTML = '<h3>Restaurants from JSON</h3>' + items.map((restaurant) =>
-          `<article class="menu-card"><h4>${restaurant.name}</h4><p>${restaurant.cuisine}</p><strong>⭐ ${restaurant.rating}</strong></article>`
-        ).join('');
+        const restaurants = await response.json();
+
+        output.innerHTML = '<div class="data-heading"><h2>Restaurants from JSON</h2><span>' +
+          restaurants.length + ' restaurants</span></div>' +
+          '<div class="restaurant-grid">' +
+          restaurants.map((restaurant) => `
+            <article class="restaurant-card">
+              <img class="restaurant-image" src="${restaurant.image}" alt="${restaurant.name}">
+              <div>
+                <h3>${restaurant.name}</h3>
+                <p>${restaurant.cuisine}</p>
+                <strong>⭐ ${restaurant.rating}</strong>
+              </div>
+            </article>
+          `).join('') + '</div>';
       } catch (error) {
-        output.textContent = 'Error: ' + error.message;
+        output.innerHTML = '<p class="error-message">Error: ' + error.message + '</p>';
       }
     });
 
+    // Week 6 + Week 9: Fetch XML and parse every menu item.
     document.getElementById('load-xml-button').addEventListener('click', async () => {
       try {
         const response = await fetch('foodex-menu.xml');
         if (!response.ok) throw new Error('Network error: ' + response.status);
+
         const xml = new DOMParser().parseFromString(await response.text(), 'application/xml');
         if (xml.querySelector('parsererror')) throw new Error('Invalid XML document');
 
         const items = [...xml.getElementsByTagName('item')];
-        output.innerHTML = '<h3>Menu from XML</h3>' + items.map((item) => {
-          const name = item.getElementsByTagName('name')[0].textContent;
-          const category = item.getElementsByTagName('category')[0].textContent;
-          const price = item.getElementsByTagName('price')[0].textContent;
-          return `<article class="menu-card"><h4>${name}</h4><p>${category}</p><strong>₹${price}</strong></article>`;
-        }).join('');
+        output.innerHTML = '<div class="data-heading"><h2>Full Menu from XML</h2><span>' +
+          items.length + ' menu items</span></div>' +
+          '<div class="menu-grid">' +
+          items.map((item) => {
+            const name = item.getElementsByTagName('name')[0].textContent;
+            const category = item.getElementsByTagName('category')[0].textContent;
+            const restaurant = item.getElementsByTagName('restaurant')[0].textContent;
+            const price = item.getElementsByTagName('price')[0].textContent;
+            const image = item.getElementsByTagName('image')[0].textContent;
+            return `
+              <article class="menu-card">
+                <img class="menu-item-image" src="${image}" alt="${name}">
+                <div class="menu-card-body">
+                  <p class="eyebrow">${category}</p>
+                  <h3>${name}</h3>
+                  <p>${restaurant}</p>
+                  <strong>₹${price}</strong>
+                </div>
+              </article>
+            `;
+          }).join('') + '</div>';
       } catch (error) {
-        output.textContent = 'Error: ' + error.message;
+        output.innerHTML = '<p class="error-message">Error: ' + error.message + '</p>';
       }
     });
   </script>
