@@ -1,67 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodEX!! - Order Food Online</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header class="site-header">
-      <h1 class="fedex-logo">
-        <span class="food">Food</span><span class="ex">Ex</span>
-      </h1>
-      <nav>
-        <ul>
-          <li><a href="home.html">Home</a></li>
-          <li><a href="foodex-data.html">FoodEx Data</a></li>
-          <li><a href="foodex-feedback.html">Feedback</a></li>
-          <li><a href="foodex-notes.html">About</a></li>
-          <li><a href="#">Offers</a></li>
-          <li><a href="#">Track Order</a></li>
-          <li><a href="cart.html" id="cart-link">cart(0)</a></li>
-          <li id="login"><a href="login.html">Login</a></li>
-          <li id="register"><a href="register.html">Register</a></li>
-          <li id="order-now-nav"><a href="#" data-name="Quick Order">Order Now</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodEX | Order Food Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Week 1: Static home page for the FoodEX food delivery website. -->
+  <header class="site-header">
+    <a class="brand" href="home.html"><span>Food</span>EX</a>
+    <nav>
+      <a class="active" href="home.html">Home</a>
+      <a href="#restaurants">Restaurants</a>
+      <a href="foodex-data.html">FoodEX Data</a>
+      <a href="foodex-feedback.html">Feedback</a>
+      <a href="cart.html" class="cart-link">Cart (0)</a>
+      <a href="login.html">Login</a>
+      <a class="nav-cta" href="register.html">Register</a>
+    </nav>
+  </header>
 
-      <!-- Hero Search Banner -->
-      <section class="hero-section">
-        <div class="hero-copy">
-          <h2>Order food from favorite restaurants near you.</h2>
-          <form>
-            <input type="text" placeholder="Enter your Favourite Food ..." required>
-            <button type="submit">Find Food</button>
-          </form>
+  <main>
+    <!-- Week 1: Hero section with a simple food search. -->
+    <section class="hero-section">
+      <div class="hero-copy">
+        <p class="eyebrow">FOODEX DELIVERY</p>
+        <h1>Good food.<br><span>Easy ordering.</span></h1>
+        <p>Search for a dish or restaurant and explore the menu from our FoodEX partners.</p>
+        <form id="food-search-form" class="search-bar">
+          <input id="food-search" type="search" placeholder="Search for food or restaurants..." autocomplete="off">
+          <button type="submit">Search</button>
+        </form>
+      </div>
+      <img class="hero-image" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1000&q=80" alt="Food served on a table">
+    </section>
+
+    <!-- Week 5: Simple food categories for browsing the catalogue. -->
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">BROWSE</p>
+          <h2>What's on your mind?</h2>
         </div>
-        <img class="hero-image" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Delicious meal" />
-      </section>
+      </div>
+      <div class="category-list">
+        <button class="category-chip" data-search="Biryani">Biryani</button>
+        <button class="category-chip" data-search="Pizza">Pizza</button>
+        <button class="category-chip" data-search="Burger">Burgers</button>
+        <button class="category-chip" data-search="North Indian">North Indian</button>
+        <button class="category-chip" data-search="Dessert">Desserts</button>
+      </div>
+    </section>
 
-      <!-- 3. Categories -->
-      <section class="categories-section">
-        <h3>What's on your mind?</h3>
-        <div class="category-list">
-          <a href="#">Biryani</a>
-          <a href="#">Pizza</a>
-          <a href="#">Burgers</a>
-          <a href="#">North Indian</a>
-          <a href="#">Desserts</a>
+    <!-- Week 5: Restaurant catalogue is dynamically loaded from foodex-menu.json. -->
+    <section class="section" id="restaurants">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">FOODEX PARTNERS</p>
+          <h2 id="restaurant-heading">Top restaurant chains</h2>
         </div>
-      </section>
+        <span id="result-count" class="result-count"></span>
+      </div>
+      <div class="restaurant-grid" id="restaurant-previews">
+        <p class="menu-status">Loading restaurants...</p>
+      </div>
+    </section>
 
-      <!-- 4. Restaurants -->
-      <section class="restaurants-section" id="restaurants">
-        <h3>Top restaurant chains in your area</h3>
+    <section class="info-strip">
+      <strong>Simple student project</strong>
+      <span>Browse restaurants, open a menu, order an item and view it in your cart.</span>
+    </section>
+  </main>
 
-        <div class="restaurant-grid" id="restaurant-previews">
-          <p class="menu-status">Loading restaurant partners...</p>
-        </div>
-      </section>
-
-    </main>
-    <script src="script.js"></script>
-  </body>
+  <footer class="site-footer">FoodEX &mdash; Web Technologies Weekly Assignment</footer>
+  <script src="script.js"></script>
+</body>
 </html>
