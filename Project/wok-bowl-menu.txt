@@ -1,0 +1,3 @@
+Veg Hakka Noodles|Stir-fried noodles with fresh vegetables and light soy seasoning.|220|https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80
+Chicken Fried Rice|Wok-tossed rice with chicken, vegetables and spring onion.|260|https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=900&q=80
+Chilli Paneer|Crispy paneer tossed with peppers, onions and chilli sauce.|240|https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=900&q=80
