@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FoodEX Notes | Fetch Text</title><link rel="stylesheet" href="../css/style.css"></head>
+<body>
+<!-- Week 8: Fetch API loads text data asynchronously. -->
+<header class="site-header"><a class="brand" href="../home.html"><span>Food</span>EX</a><nav class="main-nav"></nav></header>
+<main><section class="page-intro"><p class="eyebrow">WEEK 8</p><h1>Load FoodEX notes</h1><p>A small text file is loaded asynchronously without refreshing the page.</p></section>
+<section class="data-card"><button class="button primary" type="button" id="load-text-button">Load Notes</button><pre id="output" class="text-output">Waiting for data...</pre></section></main>
+<script>
+document.getElementById('load-text-button').addEventListener('click',async()=>{const output=document.getElementById('output');try{const response=await fetch('../data/about.txt');if(!response.ok)throw new Error('Network error: '+response.status);output.textContent=await response.text();}catch(error){output.textContent='Error: '+error.message;}});
+</script><script src="../js/script.js"></script></body></html>

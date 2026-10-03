@@ -1,0 +1,3 @@
+Masala Dosa|Crisp dosa filled with spiced potato masala and served with chutney.|160|https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=900&q=80
+Idli Sambar|Soft steamed idlis served with hot sambar and coconut chutney.|110|https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=900&q=80
+Paneer Dosa|Crisp dosa filled with spiced paneer, onions and coriander.|190|https://images.unsplash.com/photo-1630383249896-424e482df921?auto=format&fit=crop&w=900&q=80
