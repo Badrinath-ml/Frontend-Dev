@@ -1,9 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Cart | FoodEX</title><link rel="stylesheet" href="../css/style.css"></head>
-<body>
-<header class="site-header"><a class="brand" href="../home.html"><span>Food</span>EX</a><nav class="main-nav"></nav></header>
-<main><section class="page-intro"><p class="eyebrow">YOUR ORDER</p><h1>FoodEX Cart</h1><p>Review your selected food items.</p></section>
-<section class="cart-layout"><div class="data-card"><div id="cart-items" class="cart-items"></div><div id="empty-cart" class="empty-cart"><div class="empty-icon">🛒</div><h2>Your cart is empty</h2><p>Explore a restaurant and add something delicious.</p><a href="../home.html#restaurants" class="button primary">Browse Restaurants</a></div></div>
-<aside class="summary-card"><p class="eyebrow">SUMMARY</p><h2>Your order</h2><div class="summary-line"><span>Items</span><strong id="cart-count">0</strong></div><div class="summary-line"><span>Subtotal</span><strong id="cart-subtotal">₹0</strong></div><div class="summary-line"><span>Delivery</span><strong>₹0</strong></div><div class="summary-total"><span>Total</span><strong id="cart-total-price">₹0</strong></div><button id="place-order" class="button primary full-width" type="button">Place Order</button><a href="../home.html#restaurants" class="button secondary full-width">Add More Food</a></aside></section></main>
-<script src="../js/script.js"></script></body></html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart | FoodEX</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../home.html"><span>Food</span>EX</a>
+      <nav class="main-nav"></nav>
+    </header>
+    <main>
+      <section class="page-intro">
+        <p class="eyebrow">YOUR ORDER</p>
+        <h1>FoodEX Cart</h1>
+        <p>Review your selected food items.</p>
+      </section>
+      <section class="cart-layout">
+        <div class="data-card">
+          <div id="cart-items" class="cart-items"></div>
+          <div id="empty-cart" class="empty-cart">
+            <div class="empty-icon">🛒</div>
+            <h2>Your cart is empty</h2>
+            <p>Explore a restaurant and add something delicious.</p>
+            <a href="../home.html#restaurants" class="button primary"
+              >Browse Restaurants</a
+            >
+          </div>
+        </div>
+        <aside class="summary-card">
+          <p class="eyebrow">SUMMARY</p>
+          <h2>Your order</h2>
+          <div class="summary-line">
+            <span>Items</span><strong id="cart-count">0</strong>
+          </div>
+          <div class="summary-line">
+            <span>Subtotal</span><strong id="cart-subtotal">₹0</strong>
+          </div>
+          <div class="summary-line">
+            <span>Delivery</span><strong>₹0</strong>
+          </div>
+          <div class="summary-total">
+            <span>Total</span><strong id="cart-total-price">₹0</strong>
+          </div>
+          <button
+            id="place-order"
+            class="button primary full-width"
+            type="button"
+          >
+            Place Order</button
+          ><a
+            href="../home.html#restaurants"
+            class="button secondary full-width"
+            >Add More Food</a
+          >
+        </aside>
+      </section>
+    </main>
+    <script src="../js/script.js"></script>
+  </body>
+</html>
