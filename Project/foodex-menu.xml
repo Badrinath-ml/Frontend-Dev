@@ -4,16 +4,64 @@
   <item id="M001">
     <name>Chicken Biryani</name>
     <category>Biryani</category>
+    <restaurant>Spice Garden</restaurant>
     <price>300</price>
+    <image>https://images.unsplash.com/photo-1631515242808-497c3fbd3972?auto=format&amp;fit=crop&amp;w=800&amp;q=80</image>
   </item>
   <item id="M002">
-    <name>Margherita Pizza</name>
-    <category>Pizza</category>
-    <price>400</price>
+    <name>Paneer Tikka</name>
+    <category>North Indian</category>
+    <restaurant>Spice Garden</restaurant>
+    <price>260</price>
+    <image>https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&amp;fit=crop&amp;w=800&amp;q=80</image>
   </item>
   <item id="M003">
+    <name>Garlic Naan</name>
+    <category>North Indian</category>
+    <restaurant>Spice Garden</restaurant>
+    <price>120</price>
+    <image>https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&amp;fit=crop&amp;w=800&amp;q=80</image>
+  </item>
+  <item id="M004">
+    <name>Margherita Pizza</name>
+    <category>Pizza</category>
+    <restaurant>Pizza Zone</restaurant>
+    <price>400</price>
+    <image>https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&amp;fit=crop&amp;w=800&amp;q=80</image>
+  </item>
+  <item id="M005">
+    <name>Farmhouse Pizza</name>
+    <category>Pizza</category>
+    <restaurant>Pizza Zone</restaurant>
+    <price>480</price>
+    <image>https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&amp;fit=crop&amp;w=800&amp;q=80</image>
+  </item>
+  <item id="M006">
+    <name>Garlic Bread</name>
+    <category>Fast Food</category>
+    <restaurant>Pizza Zone</restaurant>
+    <price>180</price>
+    <image>https://images.unsplash.com/photo-1573140401552-388e9cdfc7cc?auto=format&amp;fit=crop&amp;w=800&amp;q=80</image>
+  </item>
+  <item id="M007">
     <name>Classic Chicken Burger</name>
     <category>Burgers</category>
+    <restaurant>The Burger House</restaurant>
     <price>200</price>
+    <image>https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&amp;fit=crop&amp;w=800&amp;q=80</image>
+  </item>
+  <item id="M008">
+    <name>Veggie Crunch Burger</name>
+    <category>Burgers</category>
+    <restaurant>The Burger House</restaurant>
+    <price>180</price>
+    <image>https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&amp;fit=crop&amp;w=800&amp;q=80</image>
+  </item>
+  <item id="M009">
+    <name>Loaded Fries</name>
+    <category>Fast Food</category>
+    <restaurant>The Burger House</restaurant>
+    <price>150</price>
+    <image>https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&amp;fit=crop&amp;w=800&amp;q=80</image>
   </item>
 </menu>
