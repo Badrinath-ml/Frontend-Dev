@@ -1,26 +1,8 @@
 [
-  {
-    "id": "R001",
-    "name": "Spice Garden",
-    "cuisine": "North Indian, Biryani",
-    "rating": 4.2,
-    "menuFile": "spice-garden-menu.txt",
-    "image": "https://images.unsplash.com/photo-1631515242808-497c3fbd3972?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    "id": "R002",
-    "name": "Pizza Zone",
-    "cuisine": "Pizza, Fast Food",
-    "rating": 4.5,
-    "menuFile": "pizza-zone-menu.txt",
-    "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    "id": "R003",
-    "name": "The Burger House",
-    "cuisine": "Burgers, Beverages",
-    "rating": 3.9,
-    "menuFile": "burger-house-menu.txt",
-    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"
-  }
+  {"id":"R001","name":"Spice Garden","cuisine":"North Indian, Biryani","rating":4.6,"menuFile":"spice-garden-menu.txt","image":"https://images.unsplash.com/photo-1631515242808-497c3fbd3972?auto=format&fit=crop&w=900&q=80"},
+  {"id":"R002","name":"Pizza Zone","cuisine":"Pizza, Italian","rating":4.5,"menuFile":"pizza-zone-menu.txt","image":"https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=80"},
+  {"id":"R003","name":"The Burger House","cuisine":"Burgers, Fast Food","rating":4.4,"menuFile":"burger-house-menu.txt","image":"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80"},
+  {"id":"R004","name":"Dosa Corner","cuisine":"South Indian","rating":4.7,"menuFile":"dosa-corner-menu.txt","image":"https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=900&q=80"},
+  {"id":"R005","name":"Wok & Bowl","cuisine":"Asian, Noodles","rating":4.3,"menuFile":"wok-bowl-menu.txt","image":"https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80"},
+  {"id":"R006","name":"Sweet Cravings","cuisine":"Desserts, Beverages","rating":4.5,"menuFile":"sweet-cravings-menu.txt","image":"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80"}
 ]
