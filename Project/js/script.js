@@ -62,13 +62,21 @@ function showOrderConfirmation(item, isCartOrder = false) {
   const backdrop = document.createElement("div");
   backdrop.className = "modal-backdrop";
   const message = isCartOrder
-    ? `Your ${item.name} has been placed successfully.`
-    : `<strong>${item.name}</strong> from ${item.restaurant} has been added to your cart and your order is ready.`;
-  backdrop.innerHTML = `<div class="order-modal" role="dialog" aria-modal="true"><div class="confirm-icon">✓</div><p class="eyebrow">FOODEX ORDER</p><h2>Order placed</h2><p>${message}</p><div class="button-row" style="justify-content:center"><a class="button secondary" href="${pageLink("cart.html")}">View Cart</a><button class="button primary" type="button" id="close-order-modal">Continue Browsing</button></div></div>`;
+    ? `Your order containing ${item.name} has been confirmed successfully.`
+    : `<strong>${item.name}</strong> from ${item.restaurant} has been added to your cart.`;
+  const title = isCartOrder ? "Order confirmed" : "Added to cart";
+  const buttons = isCartOrder
+    ? `<a class="button primary" href="${homeLink()}">Continue Shopping</a>`
+    : `<a class="button secondary" href="${pageLink("cart.html")}">View Cart</a><button class="button primary" type="button" id="close-order-modal">Continue Browsing</button>`;
+  backdrop.innerHTML = `<div class="order-modal" role="dialog" aria-modal="true"><div class="confirm-icon">✓</div><p class="eyebrow">FOODEX ORDER</p><h2>${title}</h2><p>${message}</p><div class="button-row" style="justify-content:center">${buttons}</div></div>`;
   document.body.appendChild(backdrop);
   document
     .getElementById("close-order-modal")
     .addEventListener("click", () => backdrop.remove());
+  const closeButton = document.getElementById("close-order-modal");
+  if (closeButton) {
+    closeButton.addEventListener("click", () => backdrop.remove());
+  }
   backdrop.addEventListener("click", (event) => {
     if (event.target === backdrop) backdrop.remove();
   });
@@ -135,15 +143,26 @@ function setupPlaceOrder() {
   if (!button) return;
   button.addEventListener("click", () => {
     const cart = getCart();
-    if (!cart.length) {
-      alert("Your cart is empty. Add a food item first.");
-      return;
-    }
+    if (!cart.length) return;
+    const itemCount = cart.length;
+    saveCart([]);
+    renderCart();
+    updateCart();
     showOrderConfirmation({
-      name: `${cart.length} item(s)`,
+      name: `${itemCount} item(s)`,
       restaurant: "your FoodEX cart",
-    });
+    }, true);
   });
+
+  const emptyButton = document.getElementById("empty-cart-button");
+  if (emptyButton) {
+    emptyButton.addEventListener("click", () => {
+      if (!getCart().length) return;
+      saveCart([]);
+      renderCart();
+      updateCart();
+    });
+  }
 }
 function dataPath(file) {
   return isRootPage() ? "data/" + file : "../data/" + file;
