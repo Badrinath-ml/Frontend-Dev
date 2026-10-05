@@ -57,11 +57,14 @@ function updateCart() {
     link.textContent = `Cart (${count})`;
   });
 }
-function showOrderConfirmation(item) {
+function showOrderConfirmation(item, isCartOrder = false) {
   document.querySelector(".modal-backdrop")?.remove();
   const backdrop = document.createElement("div");
   backdrop.className = "modal-backdrop";
-  backdrop.innerHTML = `<div class="order-modal" role="dialog" aria-modal="true"><div class="confirm-icon">✓</div><p class="eyebrow">FOODEX ORDER</p><h2>Added to your cart</h2><p><strong>${item.name}</strong> from ${item.restaurant} is now in your FoodEX cart.</p><div class="button-row" style="justify-content:center"><a class="button secondary" href="${pageLink("cart.html")}">View Cart</a><button class="button primary" type="button" id="close-order-modal">Continue Browsing</button></div></div>`;
+  const message = isCartOrder
+    ? `Your ${item.name} has been placed successfully.`
+    : `<strong>${item.name}</strong> from ${item.restaurant} has been added to your cart and your order is ready.`;
+  backdrop.innerHTML = `<div class="order-modal" role="dialog" aria-modal="true"><div class="confirm-icon">✓</div><p class="eyebrow">FOODEX ORDER</p><h2>Order placed</h2><p>${message}</p><div class="button-row" style="justify-content:center"><a class="button secondary" href="${pageLink("cart.html")}">View Cart</a><button class="button primary" type="button" id="close-order-modal">Continue Browsing</button></div></div>`;
   document.body.appendChild(backdrop);
   document
     .getElementById("close-order-modal")
