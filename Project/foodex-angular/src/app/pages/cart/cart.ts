@@ -10,5 +10,5 @@ export class Cart {
   constructor(private readonly cartService:CartService){}
   remove(index:number){this.cartService.remove(index);}
   clear(){this.cartService.clear();}
-  total(prices:number[]){return prices.reduce((sum,p)=>sum+p,0);}
+  total(cart:{price:number}[]){return cart.reduce((sum,item)=>sum+item.price,0);}
 }
