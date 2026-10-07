@@ -1,0 +1,9 @@
+{
+  "name": "foodex-web-technologies",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd Project/foodex-angular && npm install --no-audit --no-fund && npm run build"
+  },
+  "engines": { "node": ">=20" }
+}
