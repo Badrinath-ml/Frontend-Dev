@@ -70,9 +70,6 @@ function showOrderConfirmation(item, isCartOrder = false) {
     : `<a class="button secondary" href="${pageLink("cart.html")}">View Cart</a><button class="button primary" type="button" id="close-order-modal">Continue Browsing</button>`;
   backdrop.innerHTML = `<div class="order-modal" role="dialog" aria-modal="true"><div class="confirm-icon">✓</div><p class="eyebrow">FOODEX ORDER</p><h2>${title}</h2><p>${message}</p><div class="button-row" style="justify-content:center">${buttons}</div></div>`;
   document.body.appendChild(backdrop);
-  document
-    .getElementById("close-order-modal")
-    .addEventListener("click", () => backdrop.remove());
   const closeButton = document.getElementById("close-order-modal");
   if (closeButton) {
     closeButton.addEventListener("click", () => backdrop.remove());
