@@ -2,11 +2,12 @@
 import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {FoodItem} from '../../models/food';
 import {FoodService} from '../../services/food.service';
 import {CartService} from '../../services/cart.service';
 
-@Component({selector:'app-food-list',imports:[CommonModule,FormsModule],templateUrl:'./food-list.html',styleUrl:'./food-list.css'})
+@Component({selector:'app-food-list',imports:[CommonModule,FormsModule,RouterLink],templateUrl:'./food-list.html',styleUrl:'./food-list.css'})
 export class FoodList {
   searchText=''; readonly foods$=this.foodService.foods$;
   constructor(private readonly foodService:FoodService,private readonly cartService:CartService){}
