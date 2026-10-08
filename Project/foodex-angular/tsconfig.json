@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir":"./out-tsc","strict":true,"noImplicitOverride":true,
+    "outDir":"./out-tsc","rootDir":"./src","strict":true,"noImplicitOverride":true,
     "noPropertyAccessFromIndexSignature":true,"noImplicitReturns":true,
     "noFallthroughCasesInSwitch":true,"skipLibCheck":true,"isolatedModules":true,
     "experimentalDecorators":true,"module":"preserve","moduleResolution":"bundler",

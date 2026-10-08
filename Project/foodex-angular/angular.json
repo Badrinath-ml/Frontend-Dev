@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json.schemastore.org/angular-cli",
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "projects": {
     "foodex-angular": {
@@ -42,5 +42,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "1a06c1eb-0e32-4ff2-bb5c-b2f704e603fb"
   }
 }
