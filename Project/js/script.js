@@ -25,9 +25,13 @@ function money(value) {
   return "₹" + Number(value || 0).toLocaleString("en-IN");
 }
 function isRootPage() {
+  const path = window.location.pathname;
+  const current = path.split("/").pop() || "";
   return (
-    window.location.pathname.endsWith("/home.html") ||
-    window.location.pathname.endsWith("/Project/")
+    current === "" ||
+    current === "home.html" ||
+    path.endsWith("/Project/") ||
+    path.endsWith("/Project")
   );
 }
 function pageLink(file) {
