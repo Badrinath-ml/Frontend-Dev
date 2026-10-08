@@ -48,21 +48,17 @@ function normalizeNavigation() {
   const isHome = current === "home.html" || current === "";
   const isRestaurant = current === "restaurant-menu.html";
   const isCart = current === "cart.html";
-  const isData = current === "foodex-data.html";
+  const isData = current === "foodex-data.html" || current === "foodex-notes.html";
   const isFeedback = current === "foodex-feedback.html";
-  const isNotes = current === "foodex-notes.html";
   const isAdmin = current === "admin.html";
-  const isLogin = current === "login.html";
-  const isRegister = current === "register.html";
   nav.className = "main-nav";
   nav.innerHTML = `<a class="${isHome ? "active" : ""}" href="${homeLink()}">Home</a>
  <a class="${isRestaurant ? "active" : ""}" href="${homeLink("#restaurants")}">Restaurants</a>
- <a class="${isData || isNotes ? "active" : ""}" href="${pageLink("foodex-data.html")}">FoodEX Data</a>
- <a class="${isAdmin ? "active" : ""}" href="${pageLink("admin.html")}">Admin</a>
+ <a class="${isData ? "active" : ""}" href="${pageLink("foodex-data.html")}">FoodEX Data</a>
  <a class="${isFeedback ? "active" : ""}" href="${pageLink("foodex-feedback.html")}">Feedback</a>
+ <a class="${isAdmin ? "active" : ""}" href="${pageLink("admin.html")}">Admin</a>
  <a class="${isCart ? "active" : ""} cart-link" href="${pageLink("cart.html")}">Cart (0)</a>
- ${isLogin ? "" : '<a href="' + pageLink("login.html") + '">Login</a>'}
- ${isRegister ? "" : '<a class="nav-cta" href="' + pageLink("register.html") + '">Register</a>'}`;
+ <a href="${pageLink("about.html")}">About Project</a>`;
 }
 function updateCart() {
   const count = getCart().length;
