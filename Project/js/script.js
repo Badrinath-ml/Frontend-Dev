@@ -2,6 +2,7 @@
 // Week 8-10: Fetch API is used on the dedicated assignment pages.
 
 const CART_KEY = "foodexCart";
+const ADMIN_ITEMS_KEY = "foodexAdminItems";
 
 function getCart() {
   try {
@@ -13,6 +14,12 @@ function getCart() {
 }
 function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+function getAdminItems() {
+  try {
+    const items = JSON.parse(localStorage.getItem(ADMIN_ITEMS_KEY) || "[]");
+    return Array.isArray(items) ? items : [];
+  } catch { return []; }
 }
 function money(value) {
   return "₹" + Number(value || 0).toLocaleString("en-IN");
@@ -181,10 +188,12 @@ async function getRestaurants() {
     } catch {
       restaurant.menuItems = [];
     }
+    restaurant.adminItems = getAdminItems().filter((item) => item.restaurantId === restaurant.id);
     restaurant.searchText = [
       restaurant.name,
       restaurant.cuisine,
       ...restaurant.menuItems,
+      ...restaurant.adminItems.map((item) => item.name),
     ]
       .join(" ")
       .toLowerCase();
@@ -279,6 +288,8 @@ async function loadRestaurantPage() {
         };
       })
       .filter((item) => item.name);
+    const customItems = restaurant.adminItems || [];
+    items.push(...customItems);
     const count = document.getElementById("menu-count");
     if (count) count.textContent = `${items.length} items`;
     container.innerHTML = items
