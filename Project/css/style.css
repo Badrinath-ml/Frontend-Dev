@@ -765,3 +765,20 @@ main {
     grid-column: 2;
   }
 }
+
+
+.admin-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.75fr);gap:18px;padding-bottom:60px}
+.admin-card{padding:24px}
+.admin-card h2{font-size:1.25rem;margin-bottom:6px}
+.admin-card>p{margin-bottom:18px}
+.admin-form{display:grid;gap:7px}
+.admin-form label{margin-top:7px;font-size:.78rem;font-weight:700}
+.admin-form input,.admin-form select,.admin-form textarea{width:100%;border:1px solid var(--border);border-radius:8px;outline:0;padding:10px 12px;background:#fffdfa;color:var(--ink)}
+.admin-form input:focus,.admin-form select:focus,.admin-form textarea:focus{border-color:var(--primary)}
+.admin-item{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:13px 0;border-bottom:1px solid var(--border)}
+.admin-item:last-child{border-bottom:0}
+.admin-item strong,.admin-item span,.admin-item small{display:block}
+.admin-item span,.admin-item small{color:var(--muted);font-size:.72rem}
+.admin-item small{margin-top:2px}
+.admin-note{padding:13px 15px;margin-top:15px;background:var(--soft);border-radius:9px;color:var(--muted);font-size:.74rem}
+@media (max-width:900px){.admin-grid{grid-template-columns:1fr}}
