@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | FoodEX</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../home.html"><span>Food</span>EX</a>
+      <nav class="main-nav"></nav>
+    </header>
+    <main>
+      <section class="page-intro">
+        <p class="eyebrow">FOODEX ADMIN DEMO</p>
+        <h1>Manage food items</h1>
+        <p>Add a food item to an existing restaurant. The item will appear in that restaurant's menu on this browser.</p>
+      </section>
+      <section class="admin-grid">
+        <div class="data-card admin-card">
+          <h2>Add Food Item</h2>
+          <p class="muted">Static frontend administration for the FoodEX demonstration.</p>
+          <form id="admin-food-form" class="admin-form">
+            <label for="admin-name">Food name</label>
+            <input id="admin-name" name="name" required placeholder="Paneer Butter Masala" />
+
+            <label for="admin-restaurant">Restaurant</label>
+            <select id="admin-restaurant" name="restaurantId" required>
+              <option value="R001" data-name="Spice Garden">Spice Garden</option>
+              <option value="R002" data-name="Pizza Zone">Pizza Zone</option>
+              <option value="R003" data-name="The Burger House">The Burger House</option>
+              <option value="R004" data-name="Dosa Corner">Dosa Corner</option>
+              <option value="R005" data-name="Wok & Bowl">Wok & Bowl</option>
+              <option value="R006" data-name="Sweet Cravings">Sweet Cravings</option>
+            </select>
+            <input type="hidden" id="admin-restaurant-name" name="restaurant" value="Spice Garden" />
+
+            <label for="admin-category">Category</label>
+            <input id="admin-category" name="category" required placeholder="North Indian" />
+
+            <label for="admin-price">Price</label>
+            <input id="admin-price" name="price" type="number" min="1" required placeholder="240" />
+
+            <label for="admin-description">Description</label>
+            <textarea id="admin-description" name="description" rows="3" required placeholder="Short description of the dish"></textarea>
+
+            <label for="admin-image">Image URL</label>
+            <input id="admin-image" name="image" type="url" placeholder="https://..." />
+
+            <button class="button primary" type="submit">Add Food Item</button>
+            <p id="admin-success" class="success-message"></p>
+          </form>
+          <div class="admin-note"><strong>Demo note:</strong> no backend or database is used. Admin items are stored in localStorage and are therefore browser-specific.</div>
+        </div>
+        <div class="data-card admin-card">
+          <h2>Added Items</h2>
+          <p class="muted">Items created from this browser.</p>
+          <div id="admin-food-list"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><strong>FoodEX</strong> · Static Admin Demonstration</footer>
+    <script src="../js/admin.js"></script>
+    <script src="../js/script.js"></script>
+  </body>
+</html>
